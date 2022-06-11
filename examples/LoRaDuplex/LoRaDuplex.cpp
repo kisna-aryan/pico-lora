@@ -98,7 +98,7 @@ int main(){
   // override the default CS, reset, and IRQ pins (optional)
   // LoRa.setPins(csPin, resetPin, irqPin);// set CS, reset, IRQ pin
 
-  if (!LoRa.begin(500E6)) {             // initialize ratio at 915 MHz
+  if (!LoRa.begin(433E6)) {             // initialize ratio at 915 MHz
     printf("LoRa init failed. Check your connections.\n");
     while (true);                       // if failed, do nothing
   }
