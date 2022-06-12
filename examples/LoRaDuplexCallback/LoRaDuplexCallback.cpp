@@ -96,9 +96,9 @@ int main() {
   printf("LoRa Duplex with callback");
 
   // override the default CS, reset, and IRQ pins (optional)
-  LoRa.setPins(csPin, resetPin, irqPin);// set CS, reset, IRQ pin
+  // LoRa.setPins(csPin, resetPin, irqPin);// set CS, reset, IRQ pin
 
-  if (!LoRa.begin(915E6)) {             // initialize ratio at 915 MHz
+  if (!LoRa.begin(433E6)) {             // initialize ratio at 915 MHz
     printf("LoRa init failed. Check your connections.");
     while (true);                       // if failed, do nothing
   }
@@ -111,7 +111,7 @@ int main() {
     if (to_ms_since_boot(get_absolute_time()) - lastSendTime > interval) {
       string message = "HeLoRa World!";   // send a message
       sendMessage(message);
-      printf("Sending %s", message.c_str());
+      printf("Sending %s\n", message.c_str());
       lastSendTime = to_ms_since_boot(get_absolute_time());            // timestamp the message
       interval = (rand()%2000) + 1000;     // 2-3 seconds
       LoRa.receive();                     // go back into receive mode

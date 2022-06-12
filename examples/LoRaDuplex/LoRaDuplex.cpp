@@ -85,12 +85,11 @@ void onReceive(int packetSize) {
     printf("error: message length does not match length\n");
     return;                             // skip rest of function
   }
-// printf("Sent to: 0x%x localaddress 0x%x\n", recipient, localAddress);
 //   // if the recipient isn't this device or broadcast,
-//   if (recipient != localAddress || recipient != 0xFF) {
-//     printf("This message is not for me.\n");
-//     return;                             // skip rest of function
-//   }
+  if (recipient != localAddress && recipient != 0xFF) {
+    printf("This message is not for me.\n");
+    return;                             // skip rest of function
+  }
 
   // if message is for this device, or broadcast, print details:
   printf("Received from: 0x%x\n",sender);
