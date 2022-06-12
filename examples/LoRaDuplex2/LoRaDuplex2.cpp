@@ -33,8 +33,8 @@ string outgoing;              // outgoing message
 
 uint8_t msgCount = 0;            // count of outgoing messages
 
-uint8_t localAddress = 0xCC;    // address of this device
-uint8_t destination = 0xBB;      // destination to send to
+uint8_t localAddress = 0xBB;    // address of this device
+uint8_t destination = 0xCC;      // destination to send to
 
 long lastSendTime = 0;        // last send time
 int interval = 2000;          // interval between sends
@@ -79,7 +79,6 @@ void onReceive(int packetSize) {
   while (LoRa.available()) {
     incoming += (char)LoRa.read();
   }
-
   // printf("sizeofincoming %d \n", incoming.length());
   if (incomingLength != incoming.length()) {   // check length for error
     printf("error: message length does not match length\n");
@@ -117,7 +116,7 @@ int main(){
   }
 
   printf("LoRa init succeeded.\n");
-   
+  
   while (1) {
       if (to_ms_since_boot(get_absolute_time()) - lastSendTime > interval) {
       string message = "HeLoRa World!";   // send a message
